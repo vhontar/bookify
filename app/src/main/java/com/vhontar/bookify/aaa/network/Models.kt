@@ -61,7 +61,7 @@ data class NetworkVolumeInfo(
     @field:SerializedName("printedPageCount")
     val printedPageCount: Int = 0,
     @field:SerializedName("publishedDate")
-    val publishedDate: DateTime = DateTime.now(),
+    val publishedDate: String = "",
     @field:SerializedName("publisher")
     val publisher: String = "",
     @field:SerializedName("ratingsCount")

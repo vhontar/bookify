@@ -9,12 +9,12 @@ import com.bumptech.glide.Glide
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
 
-@BindingAdapter("imageUrl")
-fun ImageView.bindImageUrl(imageView: ImageView, url: String) {
-    Glide.with(imageView)
-        .load(url)
-        .into(imageView)
-}
+//@BindingAdapter("imageUrl")
+//fun ImageView.bindImageUrl(imageView: ImageView, url: String) {
+//    Glide.with(context)
+//        .load(url)
+//        .into(imageView)
+//}
 
 @BindingAdapter("isGone")
 fun bindIsGone(view: View, isGone: Boolean) {

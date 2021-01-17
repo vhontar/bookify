@@ -1,16 +1,28 @@
 package com.vhontar.bookify.aaa.network
 
+import com.vhontar.bookify.aaa.constants.NETWORK_PAGE_SIZE
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
 interface BookifyService {
 
-    fun getVolumes()
+    @GET("volumes")
+    suspend fun getVolumes(
+        @Query("key") accessToken: String,
+        @Query("q") query: String,
+        @Query("startIndex") startIndex: Int = 0,
+        @Query("maxResults") maxResults: Int = NETWORK_PAGE_SIZE,
+        @Query("printType") printType: String = "BOOKS",
+        @Query("langRestrict") langRestrict: String = "en"
+    ): Response<NetworkVolumesResponse>
 
     companion object {
         fun create(): BookifyService {

@@ -14,7 +14,7 @@ data class VolumeInfo(
     val imageLinks: ImageLinks = ImageLinks(),
     val pageCount: Int = 0,
     val printedPageCount: Int = 0,
-    val publishedDate: DateTime = DateTime.now(),
+    val publishedDate: String = "",
     val publisher: String = "",
     val ratingsCount: Int = 0,
     val title: String = ""
