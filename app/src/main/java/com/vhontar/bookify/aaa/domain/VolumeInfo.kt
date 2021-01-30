@@ -1,7 +1,7 @@
 package com.vhontar.bookify.aaa.domain
 
-import com.vhontar.bookify.aaa.domain.ImageLinks
-import org.joda.time.DateTime
+import android.content.Context
+import com.vhontar.bookify.R
 
 /**
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
@@ -18,4 +18,6 @@ data class VolumeInfo(
     val publisher: String = "",
     val ratingsCount: Int = 0,
     val title: String = ""
-)
+) {
+    fun getAuthor(context: Context) = if (authors.isEmpty()) context.getString(R.string.not_found) else authors[0]
+}

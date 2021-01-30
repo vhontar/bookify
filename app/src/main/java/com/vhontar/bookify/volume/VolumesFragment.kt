@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.vhontar.bookify.aaa.viewmodels.VolumeViewModel
 import com.vhontar.bookify.databinding.FragmentVolumesBinding
+import com.vhontar.bookify.volume.adapter.VolumeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Bookify</string>
-    <string name="book_api_token" translatable="false">YOUR_KEY_HERE</string>
+    <string name="book_api_token" translatable="false">API_KEY_HERE</string>
+
+    <!-- other -->
+    <string name="not_found">Not Found</string>
 </resources>

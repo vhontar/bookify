@@ -1,5 +1,6 @@
 package com.vhontar.bookify.aaa.network
 
+import com.vhontar.bookify.aaa.constants.BASE_URL
 import com.vhontar.bookify.aaa.constants.NETWORK_PAGE_SIZE
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -34,7 +35,7 @@ interface BookifyService {
 
 
             return Retrofit.Builder()
-                .baseUrl("https://content-books.googleapis.com/books/v1/")
+                .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

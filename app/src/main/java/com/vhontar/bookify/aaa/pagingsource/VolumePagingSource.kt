@@ -3,6 +3,7 @@ package com.vhontar.bookify.aaa.pagingsource
 import androidx.paging.PagingSource
 import com.vhontar.bookify.aaa.network.BookifyService
 import com.vhontar.bookify.aaa.network.NetworkVolume
+import com.vhontar.bookify.aaa.network.error.ResponseError
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -20,19 +21,24 @@ class VolumePagingSource(
 
         return try {
             val response = service.getVolumes(accessToken, query, position)
-            val volumes = response.body()?.volumes ?: arrayListOf()
 
-            val nextKey = if (volumes.isNullOrEmpty()) {
-                null
+            if (response.isSuccessful) {
+                val volumes = response.body()?.volumes ?: arrayListOf()
+
+                val nextKey = if (volumes.isNullOrEmpty()) {
+                    null
+                } else {
+                    position + volumes.size
+                }
+
+                LoadResult.Page(
+                    data = volumes,
+                    prevKey = if (position == 0) null else position - 1,
+                    nextKey = nextKey
+                )
             } else {
-                position + volumes.size
+                LoadResult.Error(ResponseError(response.message()))
             }
-
-            LoadResult.Page(
-                data = volumes,
-                prevKey = if (position == 0) null else position - 1,
-                nextKey = nextKey
-            )
         } catch (e: IOException) {
             return LoadResult.Error(e)
         } catch (e: HttpException) {
