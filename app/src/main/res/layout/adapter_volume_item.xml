@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/ivBookThumbnail"
-            android:layout_width="60dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="120dp"
             app:imageUrl="@{it.volumeInfo.imageLinks.smallThumbnail}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="@dimen/default_padding"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivBookThumbnail"
+            app:layout_constraintBottom_toBottomOf="@id/ivBookThumbnail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivBookThumbnail">
 
@@ -41,7 +41,7 @@
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/grey"
-                android:layout_marginTop="5dp"
+                android:textSize="16sp"
                 android:text="@{it.volumeInfo.getAuthor(context)}"
                 app:layout_constraintTop_toBottomOf="@id/tvBoolTitle"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/yellow"
                 android:text="@{it.volumeInfo.averageRating + ``}"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="@id/tvBookStar"
@@ -85,7 +85,7 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="@color/grey"
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"

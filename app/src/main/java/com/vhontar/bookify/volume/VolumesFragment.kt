@@ -30,6 +30,7 @@ class VolumesFragment : Fragment() {
 
     private var searchJob: Job? = null
 
+    // TODO Temporary provide some search results
     private val last4SearchRequests = arrayListOf(
         SearchRequest("Android Development", 343, R.drawable.cover_background_1),
         SearchRequest("Russian Classics", 504, R.drawable.cover_background_2),
@@ -46,6 +47,7 @@ class VolumesFragment : Fragment() {
         with(viewDataBinding) {
             rvVolumes.adapter = adapter
             vpBookShelves.adapter = LastSearchRequestsPagerAdapter(requireContext(), last4SearchRequests)
+            tvViewAll.setOnClickListener {  }
         }
 
         return viewDataBinding.root
@@ -55,45 +57,6 @@ class VolumesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         search("Android")
-    }
-
-    private fun updateVolumeListFromInput() {
-        // TODO
-//        binding.searchRepo.text.trim().let {
-//            if (it.isNotEmpty()) {
-//                binding.list.scrollToPosition(0)
-//                search(it.toString())
-//            }
-//        }
-    }
-
-    private fun initSearch(query: String) {
-//        viewDataBinding.searchRepo.setOnEditorActionListener { _, actionId, _ ->
-//            if (actionId == EditorInfo.IME_ACTION_GO) {
-//                updateVolumeListFromInput()
-//                true
-//            } else {
-//                false
-//            }
-//        }
-//        viewDataBinding.searchRepo.setOnKeyListener { _, keyCode, event ->
-//            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-//                updateVolumeListFromInput()
-//                true
-//            } else {
-//                false
-//            }
-//        }
-//
-//        // Scroll to top when the list is refreshed from network.
-//        lifecycleScope.launch {
-//            adapter.loadStateFlow
-//                // Only emit when REFRESH LoadState for RemoteMediator changes.
-//                .distinctUntilChangedBy { it.refresh }
-//                // Only react to cases where Remote REFRESH completes i.e., NotLoading.
-//                .filter { it.refresh is LoadState.NotLoading }
-//                .collect { viewDataBinding.list.scrollToPosition(0) }
-//        }
     }
 
     private fun search(query: String) {
