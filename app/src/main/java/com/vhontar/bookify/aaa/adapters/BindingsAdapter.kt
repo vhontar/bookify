@@ -3,7 +3,9 @@ package com.vhontar.bookify.aaa.adapters
 import android.util.Patterns
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.Dimension
 import androidx.databinding.BindingAdapter
+import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.vhontar.bookify.R
@@ -21,6 +23,16 @@ fun ImageView.bindImageUrl(url: String) {
     } else {
         this.setImageResource(R.drawable.default_book_cover)
     }
+}
+
+@BindingAdapter("clipToOutline")
+fun ImageView.bindClipToOutline(isClipped: Boolean) {
+    this.clipToOutline = isClipped
+}
+
+@BindingAdapter("pageMargin")
+fun ViewPager.bindPageMargin(pageMargin: Int) {
+    this.pageMargin = pageMargin
 }
 
 @BindingAdapter("isGone")

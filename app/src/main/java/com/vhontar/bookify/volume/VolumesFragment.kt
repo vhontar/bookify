@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.vhontar.bookify.R
+import com.vhontar.bookify.aaa.domain.SearchRequest
 import com.vhontar.bookify.aaa.viewmodels.VolumeViewModel
 import com.vhontar.bookify.databinding.FragmentVolumesBinding
+import com.vhontar.bookify.volume.adapter.LastSearchRequestsPagerAdapter
 import com.vhontar.bookify.volume.adapter.VolumeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
@@ -27,13 +30,23 @@ class VolumesFragment : Fragment() {
 
     private var searchJob: Job? = null
 
+    private val last4SearchRequests = arrayListOf(
+        SearchRequest("Android Development", 343, R.drawable.cover_background_1),
+        SearchRequest("Russian Classics", 504, R.drawable.cover_background_2),
+        SearchRequest("English Classics", 203, R.drawable.cover_background_3),
+        SearchRequest("Christian Literature", 432, R.drawable.cover_background_4)
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         viewDataBinding = FragmentVolumesBinding.inflate(inflater, container, false)
-        viewDataBinding.rvVolumes.adapter = adapter
+        with(viewDataBinding) {
+            rvVolumes.adapter = adapter
+            vpBookShelves.adapter = LastSearchRequestsPagerAdapter(requireContext(), last4SearchRequests)
+        }
 
         return viewDataBinding.root
     }
