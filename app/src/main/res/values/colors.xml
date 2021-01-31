@@ -9,7 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="light_background">#FBFAFA</color>
-    <color name="grey">#D3DAE2</color>
+    <color name="grey">#A9A9A9</color>
     <color name="yellow">#FD7C18</color>
     <color name="green">#26CEC1</color>
+
+    <!-- rating star color -->
+    <color name="rating_star_color">#FFBF24</color>
 </resources>

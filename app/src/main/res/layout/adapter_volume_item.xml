@@ -16,9 +16,8 @@
         android:paddingBottom="@dimen/default_padding">
 
         <ImageView
+            style="@style/BookCoverThumbnail"
             android:id="@+id/ivBookThumbnail"
-            android:layout_width="80dp"
-            android:layout_height="120dp"
             app:imageUrl="@{it.volumeInfo.imageLinks.smallThumbnail}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -63,8 +62,7 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/baseline_star"
-                app:tint="@color/yellow"
+                android:src="@drawable/filled_star"
                 app:layout_constraintTop_toBottomOf="@id/tvBoolAuthor"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -72,9 +70,9 @@
                 android:id="@+id/tvBoolRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/yellow"
+                android:textColor="@color/rating_star_color"
                 android:text="@{it.volumeInfo.averageRating + ``}"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="@id/tvBookStar"

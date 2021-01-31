@@ -3,4 +3,6 @@
     <dimen name="default_padding">20dp</dimen>
     <dimen name="last_search_result_item_height">230dp</dimen>
     <dimen name="last_search_result_cover_height">190dp</dimen>
+
+    <dimen name="header_text_size">32sp</dimen>
 </resources>

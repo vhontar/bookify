@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.vhontar.bookify.aaa.viewmodels.VolumeViewModel
 import com.vhontar.bookify.databinding.FragmentVolumeDetailBinding
@@ -28,6 +30,12 @@ class VolumeDetailFragment: Fragment() {
         viewDataBinding = FragmentVolumeDetailBinding.inflate(inflater, container, false)
         viewDataBinding.lifecycleOwner = this
         viewDataBinding.viewmodel = viewModel
+
+        with(viewDataBinding) {
+            ivBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+        }
 
         return viewDataBinding.root
     }
