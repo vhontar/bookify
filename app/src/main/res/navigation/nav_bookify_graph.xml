@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bookify_graph"
+    app:startDestination="@id/volumesFragment">
+
+    <fragment
+        android:id="@+id/volumesFragment"
+        android:name="com.vhontar.bookify.volume.VolumesFragment"
+        android:label="VolumesFragment">
+        <action
+            android:id="@+id/action_volumesFragment_to_volumeDetailFragment"
+            app:destination="@id/volumeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/volumeDetailFragment"
+        android:name="com.vhontar.bookify.volume.VolumeDetailFragment"
+        android:label="VolumeDetailFragment">
+        <argument
+            android:name="volumeId"
+            app:argType="string" />
+        <argument
+            android:name="isNetworkRequest"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+</navigation>

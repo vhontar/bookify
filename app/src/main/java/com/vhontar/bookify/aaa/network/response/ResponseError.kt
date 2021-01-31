@@ -1,4 +1,4 @@
-package com.vhontar.bookify.aaa.network.error
+package com.vhontar.bookify.aaa.network.response
 
 /**
  * Created by Vladyslav Hontar (vhontar) on 30.01.21.

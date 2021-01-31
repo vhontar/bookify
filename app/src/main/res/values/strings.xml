@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name" translatable="false">Bookify</string>
-    <string name="book_api_token" translatable="false">API_KEY_HERE</string>
+    <string name="book_api_token" translatable="false">AIzaSyAk3IsHzPsHpiNYQJXUabvvj1kHFwL0aDg</string>
+
+    <!-- errors -->
+    <string name="error_something_went_wrong">Something went wrong</string>
+    <string name="error_message_network">Network isn\'t working properly. Check your internet connection.</string>
+    <string name="error_response_without_success">Response wasn\'t successful. Try again later.</string>
 
     <!-- other -->
     <string name="not_found">Not Found</string>

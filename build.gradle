@@ -14,6 +14,7 @@ buildscript {
         jodaVersion = '2.10.2'
         hiltVersion = '2.28.3-alpha'
         hiltViewModelVersion = '1.0.0-alpha02'
+        navigationVersion = '2.3.3'
         okhttpLoggingVersion = '4.7.2'
         pagingVersion = '3.0.0-alpha02'
         retrofitVersion = '2.9.0'
@@ -25,9 +26,10 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "com.android.tools.build:gradle:4.1.2"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

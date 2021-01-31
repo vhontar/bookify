@@ -8,6 +8,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -23,7 +24,13 @@ interface BookifyService {
         @Query("maxResults") maxResults: Int = NETWORK_PAGE_SIZE,
         @Query("printType") printType: String = "BOOKS",
         @Query("langRestrict") langRestrict: String = "en"
-    ): Response<NetworkVolumesResponse>
+    ): Response<NetworkVolumes>
+
+    @GET("volumes/{id}")
+    suspend fun getVolume(
+        @Path("id") volumeId: String,
+        @Query("key") accessToken: String
+    ): Response<NetworkVolume>
 
     companion object {
         fun create(): BookifyService {

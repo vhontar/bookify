@@ -3,7 +3,7 @@ package com.vhontar.bookify.aaa.pagingsource
 import androidx.paging.PagingSource
 import com.vhontar.bookify.aaa.network.BookifyService
 import com.vhontar.bookify.aaa.network.NetworkVolume
-import com.vhontar.bookify.aaa.network.error.ResponseError
+import com.vhontar.bookify.aaa.network.response.ResponseError
 import retrofit2.HttpException
 import java.io.IOException
 

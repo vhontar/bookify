@@ -7,7 +7,7 @@ import org.joda.time.DateTime
 /**
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
-data class NetworkVolumesResponse(
+data class NetworkVolumes(
     @field:SerializedName("items") val volumes: List<NetworkVolume> = arrayListOf()
 )
 
