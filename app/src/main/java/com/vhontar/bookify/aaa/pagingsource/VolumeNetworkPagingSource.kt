@@ -2,7 +2,7 @@ package com.vhontar.bookify.aaa.pagingsource
 
 import androidx.paging.PagingSource
 import com.vhontar.bookify.aaa.network.BookifyService
-import com.vhontar.bookify.aaa.network.NetworkVolume
+import com.vhontar.bookify.aaa.network.VolumeNetwork
 import com.vhontar.bookify.aaa.network.response.ResponseError
 import retrofit2.HttpException
 import java.io.IOException
@@ -10,13 +10,13 @@ import java.io.IOException
 /**
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
-class VolumePagingSource(
+class VolumeNetworkPagingSource(
     private val service: BookifyService,
     private val accessToken: String,
     private val query: String
-): PagingSource<Int, NetworkVolume>() {
+): PagingSource<Int, VolumeNetwork>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NetworkVolume> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, VolumeNetwork> {
         val position = params.key ?: 0
 
         return try {

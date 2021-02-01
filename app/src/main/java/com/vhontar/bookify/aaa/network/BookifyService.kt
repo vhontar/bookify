@@ -24,13 +24,13 @@ interface BookifyService {
         @Query("maxResults") maxResults: Int = NETWORK_PAGE_SIZE,
         @Query("printType") printType: String = "BOOKS",
         @Query("langRestrict") langRestrict: String = "en"
-    ): Response<NetworkVolumes>
+    ): Response<VolumesNetwork>
 
     @GET("volumes/{id}")
     suspend fun getVolume(
         @Path("id") volumeId: String,
         @Query("key") accessToken: String
-    ): Response<NetworkVolume>
+    ): Response<VolumeNetwork>
 
     companion object {
         fun create(): BookifyService {

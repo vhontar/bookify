@@ -4,10 +4,8 @@ import android.util.Patterns
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
-import androidx.annotation.Dimension
 import androidx.databinding.BindingAdapter
 import androidx.viewpager.widget.ViewPager
-import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.vhontar.bookify.R
 

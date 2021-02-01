@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/ivCover"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             android:background="@drawable/rounded_corners_bottom"
             android:src="@drawable/cover_background_2"
             android:cropToPadding="false"

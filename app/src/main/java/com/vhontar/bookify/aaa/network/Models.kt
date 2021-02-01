@@ -2,33 +2,32 @@ package com.vhontar.bookify.aaa.network
 
 import com.google.gson.annotations.SerializedName
 import com.vhontar.bookify.aaa.domain.*
-import org.joda.time.DateTime
 
 /**
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
-data class NetworkVolumes(
-    @field:SerializedName("items") val volumes: List<NetworkVolume> = arrayListOf()
+data class VolumesNetwork(
+    @field:SerializedName("items") val volumes: List<VolumeNetwork> = arrayListOf()
 )
 
-fun List<NetworkVolume>.asDomainModels(): List<Volume> {
+fun List<VolumeNetwork>.asDomainModels(): List<Volume> {
     return map { it.asDomainModel() }
 }
 
-data class NetworkVolume(
+data class VolumeNetwork(
     @field:SerializedName("id")
     val id: String = "",
     @field:SerializedName("saleInfo")
-    val saleInfo: NetworkSaleInfo = NetworkSaleInfo(),
+    val saleInfo: SaleInfoNetwork = SaleInfoNetwork(),
     @field:SerializedName("volumeInfo")
-    val volumeInfo: NetworkVolumeInfo = NetworkVolumeInfo()
+    val volumeInfo: VolumeInfoNetwork = VolumeInfoNetwork()
 )
 
-fun NetworkVolume.asDomainModel(): Volume {
+fun VolumeNetwork.asDomainModel(): Volume {
     return Volume(id, saleInfo.asDomainModel(), volumeInfo.asDomainModel())
 }
 
-data class NetworkSaleInfo(
+data class SaleInfoNetwork(
     @field:SerializedName("buyLink")
     val buyLink: String = "",
     @field:SerializedName("country")
@@ -36,16 +35,16 @@ data class NetworkSaleInfo(
     @field:SerializedName("isEbook")
     val isEbook: Boolean = false,
     @field:SerializedName("retailPrice")
-    val retailPrice: NetworkRetailPrice = NetworkRetailPrice(),
+    val retailPrice: RetailPriceNetwork = RetailPriceNetwork(),
     @field:SerializedName("saleability")
     val saleability: String = ""
 )
 
-fun NetworkSaleInfo.asDomainModel(): SaleInfo {
+fun SaleInfoNetwork.asDomainModel(): SaleInfo {
     return SaleInfo(buyLink, country, isEbook, retailPrice.asDomainModel(), saleability)
 }
 
-data class NetworkVolumeInfo(
+data class VolumeInfoNetwork(
     @field:SerializedName("authors")
     val authors: List<String> = arrayListOf(),
     @field:SerializedName("averageRating")
@@ -55,7 +54,7 @@ data class NetworkVolumeInfo(
     @field:SerializedName("description")
     val description: String = "",
     @field:SerializedName("imageLinks")
-    val imageLinks: NetworkImageLinks = NetworkImageLinks(),
+    val imageLinks: ImageLinksNetwork = ImageLinksNetwork(),
     @field:SerializedName("pageCount")
     val pageCount: Int = 0,
     @field:SerializedName("printedPageCount")
@@ -70,25 +69,25 @@ data class NetworkVolumeInfo(
     val title: String = ""
 )
 
-fun NetworkVolumeInfo.asDomainModel(): VolumeInfo {
+fun VolumeInfoNetwork.asDomainModel(): VolumeInfo {
     return VolumeInfo(
         authors, averageRating, categories, description, imageLinks.asDomainModel(),
         pageCount, printedPageCount, publishedDate, publisher, ratingsCount, title
     )
 }
 
-data class NetworkRetailPrice(
+data class RetailPriceNetwork(
     @field:SerializedName("amount")
     val amount: Double = 0.0,
     @field:SerializedName("currencyCode")
     val currencyCode: String = ""
 )
 
-fun NetworkRetailPrice.asDomainModel(): RetailPrice {
+fun RetailPriceNetwork.asDomainModel(): RetailPrice {
     return RetailPrice(amount, currencyCode)
 }
 
-data class NetworkImageLinks(
+data class ImageLinksNetwork(
     @field:SerializedName("medium")
     val medium: String = "",
     @field:SerializedName("small")
@@ -99,6 +98,6 @@ data class NetworkImageLinks(
     val thumbnail: String = ""
 )
 
-fun NetworkImageLinks.asDomainModel(): ImageLinks {
+fun ImageLinksNetwork.asDomainModel(): ImageLinks {
     return ImageLinks(medium, small, smallThumbnail, thumbnail)
 }

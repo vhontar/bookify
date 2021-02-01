@@ -1,7 +1,5 @@
 package com.vhontar.bookify.aaa.domain
 
-import com.vhontar.bookify.aaa.domain.RetailPrice
-
 /**
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
