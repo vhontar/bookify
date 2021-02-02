@@ -6,12 +6,10 @@ import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.vhontar.bookify.aaa.domain.Volume
-import com.vhontar.bookify.aaa.network.asDomainModel
 import com.vhontar.bookify.aaa.network.resource.wrapEspressoIdlingResource
 import com.vhontar.bookify.aaa.network.response.ResponseStatus
-import com.vhontar.bookify.aaa.repository.VolumeRepository
+import com.vhontar.bookify.aaa.repository.volume.networkonly.VolumeNetworkOnlyRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import com.vhontar.bookify.R
 
@@ -20,7 +18,7 @@ import com.vhontar.bookify.R
  */
 class VolumeViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle,
-    private val repository: VolumeRepository
+    private val repository: VolumeNetworkOnlyRepository
 ) : ViewModel(), DefaultViewModel {
 
     private val _isServerDown = MutableLiveData<Boolean>()
@@ -51,9 +49,7 @@ class VolumeViewModel @ViewModelInject constructor(
             return lastResult
 
         currentQueryValue = query
-        val newResult: Flow<PagingData<Volume>> = repository.getVolumes(query)
-            .map { data -> data.map { it.asDomainModel() } }
-            .cachedIn(viewModelScope)
+        val newResult: Flow<PagingData<Volume>> = repository.getVolumes(query).cachedIn(viewModelScope)
         currentSearchResult = newResult
         return newResult
     }
@@ -80,7 +76,7 @@ class VolumeViewModel @ViewModelInject constructor(
                     }
                     ResponseStatus.SUCCESS -> {
                         _isServerDown.value = false
-                        _volume.value = response.data?.asDomainModel()
+                        _volume.value = response.data
                     }
                     else -> {
                     }

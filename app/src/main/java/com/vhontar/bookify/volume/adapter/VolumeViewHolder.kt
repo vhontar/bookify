@@ -28,7 +28,7 @@ class VolumeViewHolder private constructor(private val binding: AdapterVolumeIte
     }
 
     companion object {
-        fun from(parent: ViewGroup): VolumeViewHolder {
+        fun create(parent: ViewGroup): VolumeViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = AdapterVolumeItemBinding.inflate(layoutInflater, parent, false)
 

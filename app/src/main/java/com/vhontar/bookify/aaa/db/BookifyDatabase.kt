@@ -5,20 +5,20 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.vhontar.bookify.aaa.db.converter.ArrayListConverter
 import com.vhontar.bookify.aaa.db.converter.DateTimeConverter
 
 /**
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
 @Database(
-    version = 1,
-    entities = [VolumeEntity::class, SearchRequestWithVolumesEntity::class, LikedVolumeEntity::class]
+    version = 2,
+    entities = [VolumeEntity::class, SearchRequestEntity::class]
 )
-@TypeConverters(DateTimeConverter::class)
+@TypeConverters(DateTimeConverter::class, ArrayListConverter::class)
 abstract class BookifyDatabase : RoomDatabase() {
     abstract fun searchRequestDao(): SearchRequestDao
     abstract fun volumeDao(): VolumeDao
-    abstract fun likedVolumeDao(): LikedVolumeDao
 
     companion object {
         private const val DATABASE_NAME = "bookifyDB"

@@ -10,7 +10,7 @@ import com.vhontar.bookify.aaa.domain.Volume
  */
 class VolumeAdapter: PagingDataAdapter<Volume, VolumeViewHolder>(REPO_COMPARATOR) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VolumeViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VolumeViewHolder.create(parent)
     override fun onBindViewHolder(holder: VolumeViewHolder, position: Int) {
         getItem(position)?.let {
             holder.bind(it)

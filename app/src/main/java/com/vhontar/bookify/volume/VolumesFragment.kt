@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.vhontar.bookify.R
 import com.vhontar.bookify.aaa.domain.SearchRequest
+import com.vhontar.bookify.aaa.ui.loader.CustomLoadStateAdapter
 import com.vhontar.bookify.aaa.viewmodels.VolumeViewModel
 import com.vhontar.bookify.databinding.FragmentVolumesBinding
 import com.vhontar.bookify.volume.adapter.LastSearchRequestsPagerAdapter
@@ -45,7 +46,13 @@ class VolumesFragment : Fragment() {
     ): View {
         viewDataBinding = FragmentVolumesBinding.inflate(inflater, container, false)
         with(viewDataBinding) {
+
+            // Bind the footer adapter with the list
             rvVolumes.adapter = adapter
+                .withLoadStateFooter(
+                    footer = CustomLoadStateAdapter { adapter.retry() }
+                )
+
             vpBookShelves.adapter = LastSearchRequestsPagerAdapter(requireContext(), last4SearchRequests)
             tvViewAll.setOnClickListener {  }
         }

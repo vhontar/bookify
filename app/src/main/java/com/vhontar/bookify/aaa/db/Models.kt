@@ -1,6 +1,7 @@
 package com.vhontar.bookify.aaa.db
 
 import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 import com.vhontar.bookify.aaa.domain.*
 import dagger.multibindings.IntoMap
 import org.joda.time.DateTime
@@ -57,7 +58,11 @@ fun VolumeInfoEntity.asDomainModel(): VolumeInfo {
     )
 }
 
-@Entity(tableName = "volumes", primaryKeys = ["id", "search_request_id"])
+@Entity(tableName = "volumes",
+    primaryKeys = ["id", "search_request_id"],
+    foreignKeys = [ForeignKey(onDelete = CASCADE, entity = SearchRequestEntity::class, parentColumns = ["id"], childColumns = ["search_request_id"])],
+    indices = [Index("search_request_id")]
+)
 data class VolumeEntity(
     @ColumnInfo(name = "id") var volumeId: String,
     @ColumnInfo(name = "search_request_id") var searchRequestId: Int,
@@ -76,11 +81,19 @@ fun List<VolumeEntity>.asDomainModels(): List<Volume> {
 
 @Entity(tableName = "search_requests")
 data class SearchRequestEntity(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
     @ColumnInfo(name = "q_search") var qSearch: String,
     @ColumnInfo(name = "books_count") var booksCount: Int,
-    @ColumnInfo(name = "created_at") var createdAt: DateTime
+    @ColumnInfo(name = "created_at") var createdAt: DateTime = DateTime.now()
 )
+
+fun SearchRequestEntity.asDomainModel(): SearchRequest {
+    return SearchRequest(
+        qSearch,
+        booksCount,
+        createdAt = createdAt
+    )
+}
 
 // one to many relation
 data class SearchRequestWithVolumesEntity(
@@ -100,8 +113,3 @@ fun SearchRequestWithVolumesEntity.asDomainModel(): SearchRequest {
         createdAt = searchRequestEntity.createdAt
     )
 }
-
-@Entity(tableName = "liked_volumes")
-data class LikedVolumeEntity(
-    @Embedded var volumeEntity: VolumeEntity
-)

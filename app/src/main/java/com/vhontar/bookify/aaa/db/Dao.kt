@@ -2,7 +2,6 @@ package com.vhontar.bookify.aaa.db
 
 import androidx.paging.PagingSource
 import androidx.room.*
-import com.vhontar.bookify.aaa.domain.Volume
 
 /**
  * Created by Vladyslav Hontar (vhontar) on 01.02.21.
@@ -23,10 +22,10 @@ interface VolumeDao {
     fun getById(volumeId: String): VolumeEntity
 
     @Query("SELECT * FROM volumes WHERE search_request_id = :searchRequestId ORDER BY ratings_count, average_rating desc LIMIT :popularCount")
-    fun getPopularVolumesForSearchRequest(searchRequestId: Int, popularCount: Int = 10): List<SearchRequestEntity>
+    fun getPopularVolumesForSearchRequest(searchRequestId: Int, popularCount: Int = 10): List<VolumeEntity>
 
     @Query("SELECT * FROM volumes WHERE search_request_id = :searchRequestId")
-    fun getVolumesForSearchRequest(searchRequestId: Int): PagingSource<Int, Volume>
+    fun getVolumesForSearchRequest(searchRequestId: Int): PagingSource<Int, VolumeEntity>
 }
 
 @Dao
@@ -37,9 +36,12 @@ interface SearchRequestDao {
     @Delete
     fun delete(searchRequest: SearchRequestEntity)
 
+    @Query("SELECT * FROM search_requests")
+    fun getSearchRequests(): List<SearchRequestEntity>
+
     @Transaction
     @Query("SELECT * FROM search_requests WHERE q_search = :qSearch LIMIT 1")
-    fun getSearchRequest(qSearch: String): SearchRequestEntity
+    fun getSearchRequest(qSearch: String): SearchRequestEntity?
 
     @Transaction
     @Query("SELECT * FROM search_requests")
@@ -48,16 +50,4 @@ interface SearchRequestDao {
     @Transaction
     @Query("SELECT * FROM search_requests WHERE q_search = :qSearch")
     fun getSearchRequestWithVolumes(qSearch: String): List<SearchRequestEntity>
-}
-
-@Dao
-interface LikedVolumeDao {
-    @Insert(entity = LikedVolumeEntity::class)
-    fun insert(volume: VolumeEntity)
-
-    @Delete(entity = LikedVolumeEntity::class)
-    fun delete(volume: VolumeEntity)
-
-    @Query("SELECT * FROM liked_volumes")
-    fun getLikedVolumes(): List<VolumeEntity>
 }
