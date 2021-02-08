@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.vhontar.bookify.aaa.viewmodels.VolumeViewModel" />
+            type="com.vhontar.bookify.aaa.viewmodels.volume.networkonly.VolumeNetworkOnlyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

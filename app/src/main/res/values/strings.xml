@@ -10,6 +10,7 @@
     <!-- volumes -->
     <string name="books_found">%1$d books</string>
     <string name="popular">Popular</string>
+    <string name="all_volumes">All volumes</string>
     <string name="view_all">View all</string>
 
     <!-- other -->

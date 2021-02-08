@@ -8,7 +8,7 @@ import com.vhontar.bookify.aaa.domain.Volume
 /**
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
-class VolumeAdapter: PagingDataAdapter<Volume, VolumeViewHolder>(REPO_COMPARATOR) {
+class VolumePagingDataAdapter: PagingDataAdapter<Volume, VolumeViewHolder>(REPO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VolumeViewHolder.create(parent)
     override fun onBindViewHolder(holder: VolumeViewHolder, position: Int) {

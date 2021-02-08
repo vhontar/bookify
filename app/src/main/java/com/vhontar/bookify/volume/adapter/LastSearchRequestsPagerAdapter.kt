@@ -13,8 +13,15 @@ import com.vhontar.bookify.databinding.PageradapterLastSearchRequestItemBinding
  */
 class LastSearchRequestsPagerAdapter(
     private val context: Context,
-    private val searchRequests: List<SearchRequest>
+    private var searchRequests: List<SearchRequest>
 ): PagerAdapter() {
+    private var currentSearchRequestSelected: SearchRequest? = null
+
+    init {
+        if (searchRequests.isNotEmpty())
+            currentSearchRequestSelected = searchRequests[0]
+    }
+
     override fun isViewFromObject(view: View, `object`: Any): Boolean = view === `object`
     override fun getCount(): Int = searchRequests.size
     override fun getPageWidth(position: Int): Float = if (searchRequests.size > 1) 0.90f else 1f
@@ -24,10 +31,21 @@ class LastSearchRequestsPagerAdapter(
         val viewDataBinding = PageradapterLastSearchRequestItemBinding.inflate(inflater, container, false)
         with(viewDataBinding) {
             it = searchRequests[position]
-            llRunSearch.setOnClickListener {  }
+            llRunSearch.setOnClickListener {
+                currentSearchRequestSelected = searchRequests[position]
+            }
         }
 
         container.addView(viewDataBinding.root)
         return viewDataBinding.root
+    }
+    fun currentSearchRequestQuery(): String = currentSearchRequestSelected?.qSearch ?: ""
+    fun setItems(items: List<SearchRequest>) {
+        if (items.isNotEmpty()) {
+            currentSearchRequestSelected = items[0]
+        }
+
+        searchRequests = items
+        notifyDataSetChanged()
     }
 }

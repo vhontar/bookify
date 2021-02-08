@@ -5,6 +5,7 @@ package com.vhontar.bookify.aaa.domain
  */
 data class Volume(
     val id: String = "",
+    var searchRequestId: Long = 0,
     val saleInfo: SaleInfo = SaleInfo(),
     val volumeInfo: VolumeInfo = VolumeInfo()
 )

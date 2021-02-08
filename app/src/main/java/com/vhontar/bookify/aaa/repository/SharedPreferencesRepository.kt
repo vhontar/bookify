@@ -21,7 +21,16 @@ class SharedPreferencesRepository @Inject constructor(context: Context) {
             .apply()
     }
 
+    fun isNetworkOnly(): Boolean = preference.getBoolean(KEY_NETWORK_ONLY, false)
+    fun setNetworkOnly(isNetworkOnly: Boolean) {
+        preference
+            .edit()
+            .putBoolean(KEY_NETWORK_ONLY, isNetworkOnly)
+            .apply()
+    }
+
     companion object {
         private const val KEY_ACCESS_TOKEN = "key_access_token"
+        private const val KEY_NETWORK_ONLY = "key_network_only"
     }
 }

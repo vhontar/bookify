@@ -10,4 +10,5 @@ interface DefaultViewModel {
     val isNetworkOff: LiveData<Boolean>
     val snackbarText: LiveData<Int>
     val dataLoading: LiveData<Boolean>
+    fun isNetworkOnly(): Boolean
 }

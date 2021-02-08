@@ -2,7 +2,7 @@ package com.vhontar.bookify
 
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.vhontar.bookify.aaa.viewmodels.VolumeViewModel
+import com.vhontar.bookify.aaa.viewmodels.volume.networkonly.VolumeNetworkOnlyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -10,5 +10,5 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class SplashActivity: AppCompatActivity() {
-    private val viewModel: VolumeViewModel by viewModels()
+    private val viewModel: VolumeNetworkOnlyViewModel by viewModels()
 }

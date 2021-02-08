@@ -7,6 +7,7 @@ import com.vhontar.bookify.aaa.domain.*
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
 data class VolumesNetwork(
+    @field:SerializedName("totalItems") val totalItems: Int = 0,
     @field:SerializedName("items") val volumes: List<VolumeNetwork> = arrayListOf()
 )
 
@@ -24,7 +25,7 @@ data class VolumeNetwork(
 )
 
 fun VolumeNetwork.asDomainModel(): Volume {
-    return Volume(id, saleInfo.asDomainModel(), volumeInfo.asDomainModel())
+    return Volume(id, saleInfo = saleInfo.asDomainModel(), volumeInfo = volumeInfo.asDomainModel())
 }
 
 data class SaleInfoNetwork(

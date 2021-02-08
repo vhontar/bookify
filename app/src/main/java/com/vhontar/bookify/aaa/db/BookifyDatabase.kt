@@ -12,13 +12,14 @@ import com.vhontar.bookify.aaa.db.converter.DateTimeConverter
  * Created by Vladyslav Hontar (vhontar) on 17.01.21.
  */
 @Database(
-    version = 2,
-    entities = [VolumeEntity::class, SearchRequestEntity::class]
+    version = 3,
+    entities = [VolumeEntity::class, SearchRequestEntity::class, RemoteKeyEntity::class]
 )
 @TypeConverters(DateTimeConverter::class, ArrayListConverter::class)
 abstract class BookifyDatabase : RoomDatabase() {
     abstract fun searchRequestDao(): SearchRequestDao
     abstract fun volumeDao(): VolumeDao
+    abstract fun remoteKeyDao(): RemoteKeyDao
 
     companion object {
         private const val DATABASE_NAME = "bookifyDB"
